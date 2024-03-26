@@ -14,4 +14,4 @@ javac CronParser.java
 java CronParser.java "<cron-expression>"
 ```
 
-![./res/steps-to-exec](res/steps-to-exec.png)
+![./res/steps-to-execute](res/steps-to-execute.png)
