@@ -35,3 +35,6 @@ bin/
 .idea/workspace.xml
 cron-deliveroo.iml
 
+*.class
+./.idea/
+*.iml

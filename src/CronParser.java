@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CronParser {
@@ -109,9 +107,12 @@ public class CronParser {
 
     public static void main(String[] args) {
 
+        String arg = args[0];
         CronParser cronParser = new CronParser();
         //"minute" "hour" "day of month" "month" "day of week"
-        cronParser.parseCronExpression("*/15 0 1,15 * 1-5");
+        //"*/15 0 1,15 * 1-5"
+        cronParser.parseCronExpression(arg);
+
     }
 
 
