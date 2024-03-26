@@ -1,142 +1,42 @@
-## Cron parser
+#### Please refer the document steps-to-execute.md for steps to execute the program.
+
+## Documentation - Cron parser
 
 ### Input format 
 #### "minute" "hour" "day of month" "month" "day of week"
 
-#### Minute Input format (0-59) - should adhere to following standard
-- specific minute
-- multiple minutes - comma separated
-- step / (for every..)
-- asterisk * (every minute)
-- range of minutes - hypen
+## Input constraints
 
-Test cases for minute
-- specific minute 
-- - valid 5 
-- - invalid 61 122 - specific minute
-- multiple minutes separated by comma
-- - valid 1,2,3,5
-- - invalid 1,22,111
-- Step function
-- - */15
-- - 60/1 (starting range incorrect)
-- - 1/60 (step increment incorrect)
-- Asterisk \*
-- Range
-- 11-22 (range) & 22-11 (invalid range)
+- Minute Input format (0-59)
+- Hour input (0-23)
+- Day of month (1-31)
+- Month (1-12)
+- Day of week (1-7)
 
-- -  invalid inputs - (like mixing of . and *)
+### Input standards - each field can have the following representation 
+- specific number (eg: "5")
+- multiple numbers - comma separated  (eg: "1,2,3")
+- step function x/y (starting from x, occurs after every y) (eg: */4)
+- asterisk * (every number in range)
+- hyphen (a-b) range from a to b (eg: 2-4)
 
-#### hour input 
+### Output format
 
-- same 4-5 types of input.. 
-- common checks - just validity is different.
-- validity interface , parser class for each type of input. 
-
-```
-public interface IValidity {
-
-    public int getStartingValidity();
-
-    public int getEndingValidity();
-}
-
-public class MinuteValidity implements IValidity {
-
-    public int getStartingValidity(){
-        return 0;
-    }
-
-    public int getEndingValidity(){
-        return 59;
-    }
-
-}
-
-public interface IParser {
-
-    public List<Integer> parseString(String str, IValidity validity);
-}
-
-public class StepParser implements IParser {
-
-    @Override
-    public List<Integer> parseString(String str, IValidity validity) {
-        //logic
-    }
-}
+- minute:<will execute for minutes>
+- hour:<for these hours>
+- day of month:<for these days of month>
+- month:<for this months of a year>
+- day of week:<for these days of a week>
 
 
-```
+## Code structure
 
-### Similarly implemented hours validity
+![/res/structure.png](res/structure.png)
 
-### Checked Test cases for hour 
+- CronParser.java is the main entry class.
+- The answer is calculated in the Parser.java class.
+- It passes the input string given by user and calculates output for each of the required fields based on specific way of input (hyphen, asterisk etc.)
+- Each field has a validity, as described in above input format standards.
 
-- specific hour
-- - valid 5
-- - invalid 61 122 - specific minute
-- multiple minutes separated by comma
-- - valid 1,2,3,5
-- - invalid 1,22,111
-- Step function
-- - */15
-- - 60/1 (starting range incorrect)
-- - 1/60 (step increment incorrect)
-- Asterisk \*
-- Range
-- 11-22 (range) & 22-11 (invalid range)
-
-- -  invalid inputs - (like mixing of . and *)
-
-
-### Day of month
-### Checked Test cases for day of month
-
-- specific hour
-- - valid 5
-- - invalid 32 - specific minute
-- multiple minutes separated by comma
-- - valid 1,2,3,5
-- - invalid 1,22,111
-- Step function
-- - */15
-- - 32/1 (starting range incorrect)
-- - 1/33 (step increment incorrect)
-- Asterisk \*
-- Range
-- 11-22 (range) & 22-11 (invalid range)
-
-- -  invalid inputs - (like mixing of . and *)
-
-
-### month (1-12)
-### Checked Test cases for day of month
-
-- specific hour
-- - valid 5
-- - invalid 61 122 - specific minute
-- multiple minutes separated by comma
-- - valid 1,2,3,5
-- - invalid 1,22,111
-- Step function
-- - */15
-- - 13/1 (starting range incorrect)
-- - 1/60 (step increment incorrect)
-- Asterisk \*
-- Range
-- 11-22 (range) & 22-11 (invalid range)
-
-- -  invalid inputs - (like mixing of . and *)
-
-
-
-Each of the parser - basis on type of input have a different
-
-
-
-Extra:
-time zones - can we use library ?
-
-Resources:
+### Resources:
 resources used: https://elmah.io/tools/cron-parser/

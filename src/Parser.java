@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Parser {
+public class Parser{
 
     private static final String HYPHEN_PARSER_STR = "-";
     private static final String STEP_PARSER_STR = "/";
