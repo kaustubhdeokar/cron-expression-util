@@ -34,7 +34,7 @@
 ![/res/structure.png](res/structure.png)
 
 - CronParser.java is the main entry class.
-- The answer is calculated in the Parser.java class.
+- The answer is calculated in the parser.Parser.java class.
 - It passes the input string given by user and calculates output for each of the required fields based on specific way of input (hyphen, asterisk etc.)
 - Each field has a validity, as described in above input format standards.
 
