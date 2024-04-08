@@ -1,3 +1,8 @@
+package parser;
+
+import validity.IValidity;
+import validity.Validity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +15,7 @@ public class AsteriskParser implements IParser {
     }
 
     @Override
-    public List<Integer> parseString(String str, IValidity validity) {
+    public List<Integer> parseString(String str, Validity validity) {
 
         List<Integer> resultMinutes = new ArrayList<>();
 

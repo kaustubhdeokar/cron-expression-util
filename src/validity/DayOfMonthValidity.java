@@ -1,4 +1,14 @@
-public class DayOfMonthValidity implements IValidity {
+package validity;
+
+import parser.CronParseException;
+
+public class DayOfMonthValidity extends Validity {
+
+
+    public DayOfMonthValidity() {
+
+    }
+
     @Override
     public int getStartingValidity() {
         return 1;
@@ -22,4 +32,6 @@ public class DayOfMonthValidity implements IValidity {
         }
         return true;
     }
+
+
 }

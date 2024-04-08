@@ -1,3 +1,7 @@
+package parser;
+
+import validity.Validity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +15,14 @@ public class StepParser implements IParser {
     }
 
     @Override
-    public List<Integer> parseString(String str, IValidity validity) {
+    public List<Integer> parseString(String str, Validity validity) {
 
         List<Integer> resultMinutes = new ArrayList<>();
 
-        String[] range = str.split(STEP_PARSER_STR);
+        String[] range = str.split(IParser.STEP_PARSER_STR);
         // step parser can have input as */5, in such cases, starting point is 0.
         int startFrom = validity.getStartingValidity();
-        if (!range[0].equals(ASTERISK_PARSER_STR)) {
+        if (!range[0].equals(IParser.ASTERISK_PARSER_STR)) {
             startFrom = Integer.parseInt(range[0]);
         }
         int recurrence = Integer.parseInt(range[1]);

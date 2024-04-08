@@ -1,4 +1,8 @@
-public class MinuteValidity implements IValidity {
+package validity;
+
+import parser.CronParseException;
+
+public class MinuteValidity extends Validity {
 
     public int getStartingValidity() {
         return 0;
@@ -19,5 +23,4 @@ public class MinuteValidity implements IValidity {
         }
         return true;
     }
-
 }

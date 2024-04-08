@@ -1,3 +1,9 @@
+package parser;
+
+import parser.*;
+import validity.IValidity;
+import validity.Validity;
+
 import java.util.List;
 
 public class Parser{
@@ -9,7 +15,7 @@ public class Parser{
 
     public Parser(){}
 
-    public List<Integer> parse(String str, IValidity validity){
+    public List<Integer> parse(String str, Validity validity){
 
         if (str.contains(COMMA_PARSER_STR)) {
             return CommaParser.getInstance().parseString(str, validity);

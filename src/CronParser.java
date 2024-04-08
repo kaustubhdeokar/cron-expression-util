@@ -1,3 +1,7 @@
+import parser.CronParseException;
+import parser.Parser;
+import validity.*;
+
 import java.util.List;
 
 public class CronParser {
@@ -10,16 +14,15 @@ public class CronParser {
 
 
         String[] cronExpression = input.split(SPACE_STR);
-        if (cronExpression.length != 5) {
-            throw new CronParseException("Invalid input string, length should be according to the guidelines. Please refer readme.md");
-        }
 
-
+        //*/16 0 1,15 * FRI-MON
         String minuteString = cronExpression[0];
         String hourString = cronExpression[1];
         String dayOfTheMonthStr = cronExpression[2];
         String monthStr = cronExpression[3];
         String dayOfWeekStr = cronExpression[4];
+        int commandIdx = input.indexOf(dayOfWeekStr) + dayOfWeekStr.length();
+
         List<Integer> minute = calculateMinutesToExecuteTask(minuteString);
         List<Integer> hours = calculateHoursToExecuteTask(hourString);
         List<Integer> dayOfTheMonth = calculateDayOfTheMonthToExecuteTask(dayOfTheMonthStr);
@@ -47,6 +50,7 @@ public class CronParser {
         dayOfWeek.forEach(s -> System.out.print(s + " "));
 
         System.out.println();
+        System.out.println("Command: " + input.substring(commandIdx).trim());
     }
 
     private List<Integer> calculateDayOfWeekToExecuteTask(String dayOfWeekStr) {
@@ -107,11 +111,11 @@ public class CronParser {
 
     public static void main(String[] args) {
 
-        String arg = args[0];
+//        String arg = args[0];
         CronParser cronParser = new CronParser();
         //"minute" "hour" "day of month" "month" "day of week"
         //"*/15 0 1,15 * 1-5"
-        cronParser.parseCronExpression(arg);
+        cronParser.parseCronExpression("*/16 5 1,15 JAN-MAR TUE-FRI /usr/bin/find -v foo");
 
     }
 

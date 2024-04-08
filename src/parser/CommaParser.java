@@ -1,3 +1,8 @@
+package parser;
+
+import validity.IValidity;
+import validity.Validity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +16,9 @@ public class CommaParser implements IParser {
     }
 
     @Override
-    public List<Integer> parseString(String str, IValidity validity) {
+    public List<Integer> parseString(String str, Validity validity) {
         List<Integer> resultMinutes = new ArrayList<>();
-        String[] minutes = str.split(COMMA_PARSER_STR);
+        String[] minutes = str.split(IParser.COMMA_PARSER_STR);
         for (String minute : minutes) {
             validity.checkForValidity(minute);
             resultMinutes.add(Integer.parseInt(minute));

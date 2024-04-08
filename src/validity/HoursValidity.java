@@ -1,4 +1,8 @@
-public class HoursValidity implements IValidity{
+package validity;
+
+import parser.CronParseException;
+
+public class HoursValidity extends Validity{
     @Override
     public int getStartingValidity() {
         return 0;
